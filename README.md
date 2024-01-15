@@ -6,7 +6,7 @@ Create a multi-signature wallet smart contract using Solidity. The contract shou
 
 ## Design Choices
 
-- I utilized an enum to keep track of the transaction state. Transactions can exist in one of three states: PENDING, EXECUTED, or CANCELLED. Only transactions in the PENDING state are eligible for further action.
+- I utilized an enum to keep track of the transaction state. Transactions can exist in one of three states: `PENDING`, `EXECUTED`, or `CANCELLED`. Only transactions in the PENDING state are eligible for further action.
 - To minimize the computational overhead of counting approvals during transaction execution, I introduced an `approvalCount` variable within the transaction struct.
 - I included a `creator` variable within each transaction to identify the initiator of the transaction.
 - I established a mapping `transactionIndex -> address -> bool`, to check approval status of owners against each transactions
@@ -22,11 +22,10 @@ Create a multi-signature wallet smart contract using Solidity. The contract shou
 
 - To ensure secure withdrawals, I employed a `require` statement that verifies that only the contract itself can initiate withdrawal actions. This aligns with the security principles of a multi-signature wallet.
 - To withdraw funds, owner must submit a transaction, which should be approved by required number of owners to meet execution threshold. Only then the withdrawl can be initiated.
-- Prior to executing any transaction or initiating a withdrawal, I included a `require` check to confirm the availability of sufficient funds within the contract. This prevents unauthorized or erroneous actions.
-- I utilized modifiers to confirm that a transaction is in the "PENDING" state before allowing it to be executed.
+- Prior to executing any transaction or initiating a withdrawal, I included a `require` check to confirm the availability of sufficient funds within the contract.
+- I utilized modifiers to confirm that a transaction is in the `PENDING` state before allowing it to be executed.
 - Once a transaction is executed, it cannot be executed or canceled again, and the same rule applies to canceling a transaction. These prevents double execution or ambiguity.
-- Before executing a transaction I check if executionThreshold or approvalLimit is reached, only then the transaction is executable.
-- Prior to executing a transaction, I ensure that the "executionThreshold" or "approvalLimit" has been reached. Only then can the transaction be executed.
+- Prior to executing a transaction, I ensure that the `executionThreshold` or "approvalLimit" has been reached. Only then can the transaction be executed.
 
 ## Test Cases
 
