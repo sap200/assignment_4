@@ -8,8 +8,8 @@ Create a multi-signature wallet smart contract using Solidity. The contract shou
 
 - I utilized an enum to keep track of the transaction state. Transactions can exist in one of three states: PENDING, EXECUTED, or CANCELLED. Only transactions in the PENDING state are eligible for further action.
 - To minimize the computational overhead of counting approvals during transaction execution, I introduced an `approvalCount` variable within the transaction struct.
-- I included a `creator` variable within each transaction to readily identify the initiator of the transaction.
-- I established a mapping transactionIndex -> address -> bool, to check approval status of owners against each transactions
+- I included a `creator` variable within each transaction to identify the initiator of the transaction.
+- I established a mapping `transactionIndex -> address -> bool`, to check approval status of owners against each transactions
 - To facilitate easy retrieval of the complete list of owners, I maintained a separate array of owners within the contract.
 - To prevent unauthorized removal of legitimate owners, I disallowed the removal of owners after contract deployment.
 - I configured the `submitTransaction` function as payable, enabling convenient fund transfers as part of a transaction, if necessary.
