@@ -29,7 +29,7 @@ Create a multi-signature wallet smart contract using Solidity. The contract shou
 
 ## Test Cases
 
-- Test cases can be found in TestCases.yml format, it is written as a YML List format to ensure readability. Here is an example
+- Test cases can be found in `TestCases.yml` file in `YML` format, it is written as a YML List format to ensure readability. Here is an example
 
 ```yml
 - TestCaseId: 1
