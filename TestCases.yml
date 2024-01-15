@@ -1,0 +1,91 @@
+- TestCaseId: 1
+  TestDescription: Owner submits a transaction
+  Expected: The transaction is stored in the transactions list
+
+- TestCaseId: 2
+  TestDescription: NonOwner submits a transaction
+  Expected: Only the owner can submit a transaction, so the VM reverts with an error
+
+- TestCaseId: 3
+  TestDescription: Owner approves a transaction in pending state that wasn't approved by the same owner before
+  Expected: The owner successfully approves the transaction, and the approvalCount and approvals mapping are updated
+
+- TestCaseId: 4
+  TestDescription: Non Owner tries to approve the transaction
+  Expected: The VM reverts with the message "Msg sender is not the owner"
+
+- TestCaseId: 5
+  TestDescription: An Owner tries to approve a non-existing transaction
+  Expected: The VM reverts with an error message
+
+- TestCaseId: 6
+  TestDescription: Owner has already approved a transaction, but he tries to approve it again
+  Expected: The VM reverts with an error message
+
+- TestCaseId: 7
+  TestDescription: Owner tries to approve the transaction that is not in PENDING state
+  Expected: The VM reverts with an error message
+
+- TestCaseId: 8
+  TestDescription: Owner tries to cancel a transaction
+  Expected: The transaction state is changed to canceled
+
+- TestCaseId: 9
+  TestDescription: Non-owner tries to cancel the transaction
+  Expected: The VM reverts with an error
+
+- TestCaseId: 10
+  TestDescription: Owner tries to cancel a non-existing transaction
+  Expected: The VM reverts with an error
+
+- TestCaseId: 11
+  TestDescription: Owner tries to cancel a transaction that is not in pending state
+  Expected: The VM reverts with an error
+
+- TestCaseId: 12
+  TestDescription: Owner tries to execute a transaction that is executable
+  Expected: The transaction is executed successfully
+
+- TestCaseId: 13
+  TestDescription: Non-owner tries to execute a transaction
+  Expected: The transaction fails
+
+- TestCaseId: 14
+  TestDescription: Owner tries to execute a non-existing transaction
+  Expected: The transaction is unsuccessful, and the VM reverts with an error message
+
+- TestCaseId: 15
+  TestDescription: Owner tries to execute a transaction that is already executed
+  Expected: The VM reverts
+
+- TestCaseId: 16
+  TestDescription: Owner tries to execute a transaction that is canceled
+  Expected: The VM reverts
+
+- TestCaseId: 17
+  TestDescription: Owner tries to execute a transaction with insufficient approvals
+  Expected: The VM reverts
+
+- TestCaseId: 18
+  TestDescription: Owner tries to execute a transaction but the contract has insufficient balance to execute the transaction
+  Expected: The VM reverts
+
+- TestCaseId: 19
+  TestDescription: Owner tries to execute an invalid transaction that was submitted
+  Expected: The VM reverts
+
+- TestCaseId: 20
+  TestDescription: Owner tries to deposit a certain amount of ethers to the multisignature wallet contract
+  Expected: The transaction is executed successfully, and the balance of the contract increases
+
+- TestCaseId: 21
+  TestDescription: Owner submits a transaction to withdraw ethers by submitting a transaction
+  Expected: Owner receives ether
+
+- TestCaseId: 22
+  TestDescription: Owner submits a transaction to withdraw ethers from the contract, but the contract has insufficient balance
+  Expected: The VM reverts with an error
+
+- TestCaseId: 23
+  TestDescription: Owner tries to directly withdraw ethers without submitting a transaction
+  Expected: The VM reverts with an error
