@@ -41,7 +41,7 @@ Create a multi-signature wallet smart contract using Solidity. The contract shou
 - TestDescription provides comprehensive description of testcase
 - Expected provides the expected output of the testcase
 
-### Test Case Execution Result
+## Test Case Execution Result
 
 ![Test Case result](./Test_case_pass_sc.png)
 
