@@ -25,7 +25,7 @@ Create a multi-signature wallet smart contract using Solidity. The contract shou
 - Prior to executing any transaction or initiating a withdrawal, I included a `require` check to confirm the availability of sufficient funds within the contract.
 - I utilized modifiers to confirm that a transaction is in the `PENDING` state before allowing it to be executed.
 - Once a transaction is executed, it cannot be executed or canceled again, and the same rule applies to canceling a transaction. These prevents double execution or ambiguity.
-- Prior to executing a transaction, I ensure that the `executionThreshold` or "approvalLimit" has been reached. Only then can the transaction be executed.
+- Prior to executing a transaction, I ensure that the `approval limit` has been reached. Only then can the transaction be executed.
 
 ## Test Cases
 
